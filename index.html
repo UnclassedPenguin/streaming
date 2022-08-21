@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<body>
+  <head>
+  <style>
+
+    body {
+      background: rgb(33, 37, 41);
+      color: white;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 300%;
+    }
+
+    h2 {
+      font-size: 200%;
+    }
+
+    #maincontent{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+    }
+
+  </style>
+  </head>
+
+    <div id ="maincontent">
+      <h1> TVK Forge </h1>
+      <h1> Stream Starting Soon! </h1>
+      <h2 id="timer"></h2>
+    </div>
+
+<script>
+  document.getElementById('timer').innerHTML =
+  05 + ":" + 00;
+startTimer();
+
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  if(m<0){
+    return
+  }
+
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+</script>
+</body>
+
